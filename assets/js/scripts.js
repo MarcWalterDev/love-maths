@@ -39,8 +39,10 @@ function checkAnswer() {
 
     if (isCorrect) {
         alert("Hey! You got it right! :D");
+        incrementScore();
     } else {
         alert(`Awww...... you answered ${userAnswer}. The correct answer was ${calculatedAnswer[0]}!`);
+        incrementWrongAnswer();
     }
 
     runGame(calculatedAnswer[1]);
@@ -58,16 +60,21 @@ function  calculateCorrectAnswer() {
         return [operand1 + operand2, 'addition'];
         } else {
             alert(`Unimplimented operator ${operator}`);
-            throw `unimoplimented operator: ${operator}. Aborting!`
+            throw `unimplimented operator: ${operator}. Aborting!`
         }
     }
 
+    /**
+     * Gets current score from the DOM and increments it by 1
+     */
 function incrementScore() {
-
+    let oldScore = parseInt(document.GetElementById("score").innetText);
+    document.GetElementById("score").innetText = ++oldScore;
 }
 
 function incrementWrongAnswer() {
-
+    let oldScore = parseInt(document.GetElementById("incorrect-score").innetText);
+    document.GetElementById("incorrect-score").innetText = ++oldScore;
 }
 
 function displayAdditionQuestion (operand1, operand2) {
